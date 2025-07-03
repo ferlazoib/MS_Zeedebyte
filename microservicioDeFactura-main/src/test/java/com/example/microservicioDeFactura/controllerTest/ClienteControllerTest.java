@@ -9,32 +9,35 @@ import com.example.microservicioDeFactura.model.Cliente;
 import com.example.microservicioDeFactura.service.ClienteService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import org.mockito.Mock;
 import java.util.List;
 import java.util.Optional;
+
 @WebMvcTest(ClienteController.class)
 public class ClienteControllerTest {
 
-@Autowired
-private MockMvc mockMvc;
-@Mock
-private ClienteService clienteService;
+    @Autowired
+    private MockMvc mockMvc;
+    
+    @MockBean
+    private ClienteService clienteService;
 
-@Autowired
-private ObjectMapper objectMapper;
+    @Autowired
+    private ObjectMapper objectMapper;
 
     private Cliente cliente;
 
     /**
      * Inicializa un cliente de prueba antes de cada test.
+     */
     @BeforeEach
     void setUp() {
-        MockitoAnnotations.openMocks(this);
         cliente = new Cliente();
         cliente.setId(1L);
         cliente.setNombreEmpresa("Empresa Prueba");
@@ -42,7 +45,6 @@ private ObjectMapper objectMapper;
         cliente.setContacto("Juan Pérez");
         cliente.setCorreo("contacto@empresa.cl");
         cliente.setDireccion("Calle Falsa 123");
-    }
     }
 
     /**
