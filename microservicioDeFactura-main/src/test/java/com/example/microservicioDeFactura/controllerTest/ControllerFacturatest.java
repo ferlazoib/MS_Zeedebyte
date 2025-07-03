@@ -14,10 +14,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
-import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -25,18 +22,14 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
-@ExtendWith(MockitoExtension.class)
 @WebMvcTest(controllerFactura.class)
 public class ControllerFacturatest {
 
     @Autowired
     private MockMvc mockMvc;
 
-    @Mock
+    @MockBean
     private facturaService facturaService;
-
-    @InjectMocks
-    private controllerFactura controllerFactura;
 
     @Autowired
     private ObjectMapper objectMapper;
